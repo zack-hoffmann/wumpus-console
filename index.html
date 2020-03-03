@@ -1,21 +1,20 @@
 <!DOCTYPE html>
+
 <head>
     <title>Wumpus Console</title>
     <script src="console.js" defer></script>
     <link rel="stylesheet" href="console.css" />
 </head>
+
 <body>
-    <div class="wrapper width-80">
+    <div class="wrapper">
         <div class="scroll">
-            <p>This is the scroll area.</p>
         </div>
         <div class="prompt">
-            <div class="text">PROMPT>&nbsp;</div>
-            <div class="input">
-                <form class="input-form" autocomplete="off">
-                    <input type="text" name="input" />
-                </form>
-            </div>
+            <form class="input-form" autocomplete="off">
+                <label></label>
+                <input type="text" name="input" maxlength="80" />
+            </form>
         </div>
         <div class="spacer"></div>
     </div>

@@ -5,17 +5,10 @@ body, input[type="text"] {
     font: 1rem Inconsolata, monospace;
 }
 
-/* Line up prompt line */
-.prompt > .text, .prompt > .input {
-    float: left;
-}
-.prompt > .input {
-    width: 100%;
-}
 input[type="text"] {
     outline: none;
     border: 0;
-    width: 100%;
+    padding: 0;
 }
 
 .scroll > p {
@@ -26,8 +19,4 @@ input[type="text"] {
 .spacer {
     height: 1em;
     clear: both;
-}
-
-.width-80 {
-    width: 80ch;
 }
