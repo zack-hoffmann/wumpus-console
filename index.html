@@ -2,17 +2,20 @@
 
 <head>
     <title>Wumpus Console</title>
-    <script src="console.js" defer></script>
+    <script type="module" defer>
+        import con from '/wumpus-console.js';
+        con("console-1").load();
+    </script>
     <link rel="stylesheet" href="console.css" />
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="scroll">
+    <div id="console-1" class="wumpus-console">
+        <div class="lines">
         </div>
-        <div class="prompt">
+        <div>
             <form class="input-form" autocomplete="off">
-                <label></label>
+                <label class="prompt"></label>
                 <input type="text" name="input" maxlength="80" />
             </form>
         </div>
