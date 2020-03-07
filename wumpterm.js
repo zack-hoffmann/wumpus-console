@@ -43,10 +43,13 @@ export default function (id) {
             greeting: "Wumpus Console - Defaults Enabled"
         },
         load: (p = {}) => {
-            console.log($);
             Object.assign($.vars, p);
-            console.log($);
-            console.log(con());
+            fetch("wumpterm.css").then(css => css.text()).then(sh => {
+                const style = document.createElement("style");
+                console.log(sh);
+                style.textContent = sh;
+                document.head.appendChild(style);
+            });
             window.addEventListener("click", clickFocusHandler);
             con().querySelector(".input-form").addEventListener("submit", inputHandler);
             setLineWidth($.vars.lineWidth);
