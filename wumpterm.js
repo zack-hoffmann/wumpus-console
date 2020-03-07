@@ -1,8 +1,8 @@
 export default function (id) {
-    const con = () => document.querySelector("#" + id + ".wumpus-console");
-    const lines = () => con().querySelector(".lines");
-    const prompt = () => con().querySelector(".prompt");
-    const input = () => con().querySelector("input");
+    const term = () => document.querySelector("#" + id + ".wumpus-console");
+    const lines = () => term().querySelector(".lines");
+    const prompt = () => term().querySelector(".prompt");
+    const input = () => term().querySelector("input");
 
     const refresh = () => {
         prompt().innerText = $.vars.promptBuffer;
@@ -17,7 +17,7 @@ export default function (id) {
 
     const setLineWidth = (w) => {
         refresh();
-        con().style.width = w + "ch";
+        term().style.width = w + "ch";
         const l = prompt().innerText.length;
         input().setAttribute("maxlength", w - l);
         input().style.width = (w - l) + "ch";
@@ -29,6 +29,7 @@ export default function (id) {
         input().value = "";
         window.scrollTo(0, document.body.scrollHeight);
     };
+
     const clickFocusHandler = (e) => {
         if (e.target.nodeName === "HTML" || e.target.nodeName === "BODY") {
             input().focus();
@@ -40,18 +41,18 @@ export default function (id) {
         vars: {
             promptBuffer: "> ",
             lineWidth: 80,
-            greeting: "Wumpus Console - Defaults Enabled"
+            stylesheet: "wumpterm.css",
+            greeting: "Wumpus Terminal Alpha\nby Zack Hoffmann"
         },
         load: (p = {}) => {
             Object.assign($.vars, p);
-            fetch("wumpterm.css").then(css => css.text()).then(sh => {
+            fetch($.vars.stylesheet).then(css => css.text()).then(sh => {
                 const style = document.createElement("style");
-                console.log(sh);
                 style.textContent = sh;
                 document.head.appendChild(style);
             });
             window.addEventListener("click", clickFocusHandler);
-            con().querySelector(".input-form").addEventListener("submit", inputHandler);
+            term().querySelector(".input-form").addEventListener("submit", inputHandler);
             setLineWidth($.vars.lineWidth);
             input().focus();
             write($.vars.greeting);
